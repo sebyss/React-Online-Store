@@ -2,10 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "antd";
 import heroPicture from "../images/heroPicture.jpg";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <Page>
+      <Navbar />
       <HeroSection>
         <Image src={heroPicture} alt="" />
         <TextContainer>
@@ -29,6 +32,7 @@ const Home = () => {
         </ButtonContainer>
       </HeroSection>
       <Button />
+      <Footer />
     </Page>
   );
 };
@@ -36,13 +40,20 @@ const Home = () => {
 const Page = styled.div`
   padding-left: 300px;
   padding-right: 300px;
+  padding-top: 30px;
+  min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 `;
 
 const HeroSection = styled.div`
   height: 500px;
   background: blue;
-  margin-top: 100px;
+  margin-top: 30px;
   position: relative;
+  border-radius: 20px;
+  box-shadow: 0 0 10px black;
 `;
 
 const TextContainer = styled.div`
@@ -61,6 +72,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   position: absolute;
+  border-radius: 20px;
 `;
 
 const ButtonContainer = styled.div`
@@ -80,6 +92,7 @@ const StyledButton = styled(Button)`
   &:hover {
     border-color: #faedde;
     color: #faedde;
+    box-shadow: 0 0 6px black;
   }
   &:focus {
     border-color: #faedde;

@@ -1,15 +1,5 @@
-// import authDuck from './authDuck'
-// import employeeDuck from './employeeDuck'
-// import projectDuck from './projectDuck'
-// import announcementsDuck from './announcementDuck'
-// import eventDuck from './eventDuck'
-// import calendarDuck from './calendarDuck'
+import categoriesDuck from "./categoriesDucks";
 
-// export default {
-//   auth: authDuck,
-//   employees: employeeDuck,
-//   projects: projectDuck,
-//   announcements: announcementsDuck,
-//   events: eventDuck,
-//   calendarEvents: calendarDuck
-// }
+export default {
+  categories: categoriesDuck,
+};

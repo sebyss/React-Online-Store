@@ -1,7 +1,8 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import styled from 'styled-components'
-import Navbar from '../components/Navbar'
+import React from "react";
+import { Route } from "react-router-dom";
+import styled from "styled-components";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const AppRoute = ({ ...restProps }) => {
   return (
@@ -9,12 +10,13 @@ const AppRoute = ({ ...restProps }) => {
       <PageContainer>
         <Navbar />
         <Route {...restProps} />
+        <Footer />
       </PageContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default AppRoute
+export default AppRoute;
 
 const Container = styled.div`
   display: flex;
@@ -22,10 +24,10 @@ const Container = styled.div`
   height: 100%;
   padding-left: 200px;
   padding-right: 200px;
-`
+`;
 
 const PageContainer = styled.section`
   display: flex;
   flex-direction: column;
   flex: 1;
-`
+`;

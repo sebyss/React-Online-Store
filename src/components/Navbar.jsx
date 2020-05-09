@@ -1,16 +1,21 @@
-import React from "react";
-import styled from "styled-components";
-import logo from "../images/logo.png";
-import { Button } from "antd";
-import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import React from 'react'
+import styled from 'styled-components'
+import logo from '../images/logo.png'
+import { Button } from 'antd'
+import { ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'
+import { withRouter } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({ history }) => {
   return (
     <NavbarContainer>
       <LogoContainer src={logo}></LogoContainer>
       <ButtonsContainer>
-        <StyledButton type="ghost">Home</StyledButton>
-        <StyledButton type="ghost">Produse</StyledButton>
+        <StyledButton type="ghost" onClick={() => history.push('/')}>
+          Home
+        </StyledButton>
+        <StyledButton type="ghost" onClick={() => history.push('/products')}>
+          Produse
+        </StyledButton>
         <StyledButton type="ghost">Contact</StyledButton>
       </ButtonsContainer>
       <IconsContainer>
@@ -18,22 +23,22 @@ const Navbar = () => {
         <UserIcon />
       </IconsContainer>
     </NavbarContainer>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default withRouter(Navbar)
 
 const NavbarContainer = styled.div`
   width: 100%;
   height: 60px;
   display: flex;
-`;
+`
 
 const LogoContainer = styled.img`
   width: 100px;
   height: 100%;
   background-color: #2e2538;
-`;
+`
 
 const ButtonsContainer = styled.div`
   display: flex;
@@ -41,7 +46,7 @@ const ButtonsContainer = styled.div`
   height: 100%;
   align-items: center;
   justify-content: flex-end;
-`;
+`
 
 const StyledButton = styled(Button)`
   border-radius: 100px;
@@ -58,7 +63,7 @@ const StyledButton = styled(Button)`
     border-color: #faedde;
     color: #faedde;
   }
-`;
+`
 
 const IconsContainer = styled.div`
   display: flex;
@@ -66,7 +71,7 @@ const IconsContainer = styled.div`
   margin-left: 30px;
   align-items: center;
   justify-content: flex-end;
-`;
+`
 
 const CartIcon = styled(ShoppingCartOutlined)`
   font-size: 25px;
@@ -79,7 +84,7 @@ const CartIcon = styled(ShoppingCartOutlined)`
   &:focus {
     color: #faedde;
   }
-`;
+`
 
 const UserIcon = styled(UserOutlined)`
   font-size: 25px;
@@ -93,4 +98,4 @@ const UserIcon = styled(UserOutlined)`
   &:focus {
     color: #faedde;
   }
-`;
+`

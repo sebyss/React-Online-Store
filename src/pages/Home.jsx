@@ -1,29 +1,23 @@
-import React from "react";
-import styled from "styled-components";
-import { Button } from "antd";
-import heroPicture from "../images/heroPicture.jpg";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import React from 'react'
+import styled from 'styled-components'
+import { Button } from 'antd'
+import heroPicture from '../images/heroPicture.jpg'
 
 const Home = () => {
   return (
     <Page>
-      <Navbar />
       <HeroSection>
         <Image src={heroPicture} alt="" />
         <TextContainer>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil
-            similique doloremque asperiores fugiat dolorum aut exercitationem
-            dignissimos neque ullam necessitatibus, cum incidunt hic eos, dolor
-            corporis illum ipsa iure reiciendis?Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Aspernatur possimus maiores omnis
-            alias fuga quasi aut suscipit amet quod repudiandae ex nemo
-            voluptate blanditiis, necessitatibus, sapiente ut doloribus saepe
-            veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Explicabo ipsum quo at velit, minus eum dolor in sequi aspernatur,
-            repellendus blanditiis consectetur dolorem maiores enim. Officia
-            voluptatum aspernatur eaque ad.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil similique doloremque
+            asperiores fugiat dolorum aut exercitationem dignissimos neque ullam necessitatibus, cum
+            incidunt hic eos, dolor corporis illum ipsa iure reiciendis?Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Aspernatur possimus maiores omnis alias fuga quasi aut
+            suscipit amet quod repudiandae ex nemo voluptate blanditiis, necessitatibus, sapiente ut
+            doloribus saepe veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Explicabo ipsum quo at velit, minus eum dolor in sequi aspernatur, repellendus
+            blanditiis consectetur dolorem maiores enim. Officia voluptatum aspernatur eaque ad.
           </p>
         </TextContainer>
 
@@ -32,20 +26,17 @@ const Home = () => {
         </ButtonContainer>
       </HeroSection>
       <Button />
-      <Footer />
     </Page>
-  );
-};
+  )
+}
 
 const Page = styled.div`
-  padding-left: 300px;
-  padding-right: 300px;
   padding-top: 30px;
   min-height: 100vh;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-`;
+`
 
 const HeroSection = styled.div`
   height: 500px;
@@ -54,7 +45,7 @@ const HeroSection = styled.div`
   position: relative;
   border-radius: 20px;
   box-shadow: 0 0 10px black;
-`;
+`
 
 const TextContainer = styled.div`
   margin-top: 50px;
@@ -66,14 +57,14 @@ const TextContainer = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: #faedde;
-`;
+`
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   position: absolute;
   border-radius: 20px;
-`;
+`
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -81,7 +72,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   height: 100%;
   padding-top: 300px;
-`;
+`
 
 const StyledButton = styled(Button)`
   width: 125px;
@@ -98,6 +89,6 @@ const StyledButton = styled(Button)`
     border-color: #faedde;
     color: #faedde;
   }
-`;
+`
 
-export default Home;
+export default Home

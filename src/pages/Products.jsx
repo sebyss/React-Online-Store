@@ -1,67 +1,84 @@
-import React from "react";
-import styled from "styled-components";
-import { Menu, Checkbox } from "antd";
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { Menu, Checkbox } from 'antd'
+import { connect } from 'react-redux'
 
-const { SubMenu } = Menu;
+const { SubMenu } = Menu
 
-const Products = () => {
+const Products = ({ categories }) => {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!Object.keys(categories).length) {
+      setLoading(false)
+      
+    }
+  }, [categories])
+
+
+
   const options = [
-    { label: "Apple", value: "Apple" },
-    { label: "Pear", value: "Pear" },
-    { label: "Orange", value: "Orange" },
-  ];
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange' },
+  ]
 
   function onChange(checkedValues) {
-    console.log("checked = ", checkedValues);
+    console.log('checked = ', checkedValues)
   }
+
+  if (loading) {
+    return <p>loading...</p>
+  }
+
+  console.log(categories)
 
   return (
     <Page>
       <SideFiltersContainer>
         <StyledMenu
-          defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["sub1", "sub2"]}
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1', 'sub2']}
           mode="inline"
           inlineCollapsed={false}
         >
-          {/* <StyledSubmenu key="sub1" title="Categorii">
-            <StyledMenuItem key="1">Categoria 1</StyledMenuItem>
-            <StyledMenuItem key="2">Categoria 2</StyledMenuItem>
-            <StyledMenuItem key="3">Categoria 3</StyledMenuItem>
-            <StyledMenuItem key="5">Categoria 4</StyledMenuItem>
-          </StyledSubmenu> */}
+          <StyledSubmenu key="sub1" title="Categorii">
+            {categories.map((e, id) => (
+              <StyledMenuItem key={id}>{e.name}</StyledMenuItem>
+            ))}
+          </StyledSubmenu>
 
-          {/* <StyledSubmenu key="sub2" title="Sebitza">
-            <StyledCheckBoxGroup
-              options={[...options, ...options, ...options]}
-              defaultValue={["Apple"]}
-              onChange={onChange}
-            />
-          </StyledSubmenu> */}
+          <StyledSubmenu key="sub2" title="Sebitza">
+            <StyledCheckBoxGroup options={options} defaultValue={['Apple']} onChange={onChange} />
+          </StyledSubmenu>
         </StyledMenu>
       </SideFiltersContainer>
       <ContentContainer>
         <TopFiltersContainer />
       </ContentContainer>
     </Page>
-  );
-};
+  )
+}
 
-export default Products;
+const mapStateToProps = (state) => ({
+  categories: state.categories.list,
+})
+
+export default connect(mapStateToProps, null)(Products)
 
 const Page = styled.div`
   padding-top: 30px;
   min-height: 100vh;
   display: flex;
   min-height: 100vh;
-`;
+`
 
 const SideFiltersContainer = styled.div`
   width: 250px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-`;
+`
 
 const ContentContainer = styled.div`
   width: 100%;
@@ -69,17 +86,17 @@ const ContentContainer = styled.div`
   display: flex;
   background-color: blue;
   margin-left: 15px;
-`;
+`
 
 const TopFiltersContainer = styled.div`
   width: 100%;
   height: 40px;
   background-color: green;
-`;
+`
 
 const StyledMenu = styled(Menu)`
   border-right: 0px;
-`;
+`
 
 const StyledSubmenu = styled(SubMenu)`
   border-radius: 25px;
@@ -99,14 +116,14 @@ const StyledSubmenu = styled(SubMenu)`
   &:focus {
     border-radius: 25px;
   }
-`;
+`
 
 const StyledMenuItem = styled(Menu.Item)`
   border-radius: 25px;
-`;
+`
 
 const StyledCheckBoxGroup = styled(Checkbox.Group)`
   display: flex;
   flex-direction: column;
   margin-left: 30px;
-`;
+`

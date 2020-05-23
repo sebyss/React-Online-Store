@@ -9,7 +9,7 @@ const getFilters = (categories, selectedCategory) => {
   var filtersList = []
   var filtersNames = []
 
-  const filtersForSelectedCategory = categories.filter((e) => e.name === selectedCategory)
+  const filtersForSelectedCategory = categories.filter((e) => e.id === selectedCategory)
   const arrayFiltersList = filtersForSelectedCategory.map((e) => e.filtersList)
 
   arrayFiltersList.map((e) =>
@@ -33,6 +33,8 @@ const Products = ({ categories }) => {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [activeFilters, setActiveFilters] = useState({})
 
+  console.log(activeFilters)
+
   useEffect(() => {
     if (categories) {
       setLoading(false)
@@ -46,7 +48,7 @@ const Products = ({ categories }) => {
   if (loading) {
     return <p>loading...</p>
   }
-  console.log(activeFilters)
+
   const filters = getFilters(categories, selectedCategory)
 
   return (
@@ -60,7 +62,7 @@ const Products = ({ categories }) => {
         >
           <StyledSubmenu key="sub1" title="Categorii">
             {categories.map((e) => (
-              <StyledMenuItem key={e.name} onClick={(e) => setSelectedCategory(e.key)}>
+              <StyledMenuItem key={e.id} onClick={(e) => setSelectedCategory(e.key)}>
                 {e.name}
               </StyledMenuItem>
             ))}

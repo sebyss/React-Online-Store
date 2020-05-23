@@ -20,7 +20,7 @@ const Navbar = ({ history }) => {
       </ButtonsContainer>
       <IconsContainer>
         <CartIcon />
-        <UserIcon />
+        <UserIcon onClick={() => history.push('/adminPanel')} />
       </IconsContainer>
     </NavbarContainer>
   )

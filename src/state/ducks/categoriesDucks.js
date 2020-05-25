@@ -4,6 +4,9 @@ import { CategoriesEndpoints } from "../../api";
 const types = {
   GET_CATEGORIES_REQUEST: "[categories] GET_CATEGORIES_REQUEST",
   GET_CATEGORIES_SUCCESS: "[categories] GET_CATEGORIES_SUCCESS",
+
+  UPDATE_CATEGORIES_REQUEST: "[categories] UPDATE_CATEGORIES_REQUEST",
+  UPDATE_CATEGORIES_SUCCESS: "[categories] UPDATE_CATEGORIES_SUCCESS",
 };
 
 const initialState = {
@@ -17,6 +20,11 @@ const reducer = createReducer(initialState)({
     list: categories,
     count: categories.length,
   }),
+  [types.UPDATE_CATEGORIES_SUCCESS]: (state, { payload: { newCategory } }) => ({
+    ...state,
+    list: { ...state.categories, newCategory },
+    count: state.categories.length,
+  }),
 });
 
 const thunks = {
@@ -26,6 +34,19 @@ const thunks = {
       const categories = await CategoriesEndpoints.getCategories();
       dispatch({ type: types.GET_CATEGORIES_SUCCESS, payload: { categories } });
       return categories;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
+  updateCategoies: (newCategory) => async (dispatch) => {
+    console.log(newCategory);
+    try {
+      dispatch({ type: types.UPDATE_CATEGORIES_REQUEST });
+      await CategoriesEndpoints.updateCategory(newCategory);
+      dispatch({
+        type: types.UPDATE_CATEGORIES_SUCCESS,
+        payload: { newCategory },
+      });
     } catch (error) {
       return Promise.reject(error);
     }
